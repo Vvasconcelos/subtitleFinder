@@ -19,7 +19,6 @@ def main():
 
     folder = sys.argv[1]
     print sys.argv[1]
-    #folder = "C:\\Users\\viiva\\Downloads\\Torrent\\The.Walking.Dead.S06E10.PROPER.HDTV.x264-KILLERS[ettv]"
     for root, dirs, files in os.walk(folder):
         path = root.split('/')
         for file in files:
@@ -36,7 +35,6 @@ def main():
         for subToFind in pathList:
             f = File(subToFind)
             dirname = os.path.normpath(subToFind)
-            #print dirname
 
             subData = ops.search_subtitles([{'sublanguageid': 'pob','moviehash': f.get_hash() , 'moviebytesize': f.size }])
 
@@ -68,18 +66,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-'''
-
-f =  File(path.join("C:\\Users\\viiva\\Downloads\\Limitless.S01E15.HDTV.x264-LOL[ettv]","limitless.115.hdtv-lol[ettv].mp4"))
-
-data =
-
-if not data:
-    print "Not found any sub for: %s" % f.path()
-'''
