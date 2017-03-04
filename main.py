@@ -13,27 +13,29 @@ from os import path
 def main():
     pathList = []
     downloadList = []
-    if len(sys.argv) < 1 :
-        print "Missing Arguments"
-        quit()
+    #if len(sys.argv) < 1 :
+    #    print "Missing Arguments"
+    #    quit()
 
-    folder = sys.argv[1]
-    print sys.argv[1]
+    folder = "/home/vinicius/Downloads/torrents"
+    #print sys.argv[1]
     for root, dirs, files in os.walk(folder):
         path = root.split('/')
+        #print root
         for file in files:
             if(file.endswith(".mp4") or file.endswith(".avi") or file.endswith(".mkv") ):
-                pathList.append(os.path.join(path[0],file))
+                print os.path.join(root,file)
+                pathList.append(os.path.join(root,file))
 
     print "Found %d files" % len(pathList)
 
     if len(pathList) >= 1:
         ops = OpenSubtitles()
 
-        token = ops.login("","")
-
+        token = ops.login("zyzzyks","smoke123")
+        print token
         for subToFind in pathList:
-            f = File(subToFind)
+            f =  File(subToFind)
             dirname = os.path.normpath(subToFind)
 
             subData = ops.search_subtitles([{'sublanguageid': 'pob','moviehash': f.get_hash() , 'moviebytesize': f.size }])
