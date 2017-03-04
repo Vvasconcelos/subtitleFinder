@@ -17,7 +17,7 @@ def main():
     #    print "Missing Arguments"
     #    quit()
 
-    folder = "/home/vinicius/Downloads/torrents"
+    folder = "/home/Downloads/torrents"
     #print sys.argv[1]
     for root, dirs, files in os.walk(folder):
         path = root.split('/')
@@ -32,7 +32,7 @@ def main():
     if len(pathList) >= 1:
         ops = OpenSubtitles()
 
-        token = ops.login("zyzzyks","smoke123")
+        token = ops.login("","")
         print token
         for subToFind in pathList:
             f =  File(subToFind)
